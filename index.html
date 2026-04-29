@@ -61,10 +61,30 @@
   .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--ink); }
 
-  .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; }
+  .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; align-items: flex-end; }
   .stat { text-align: right; }
   .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--accent); line-height: 1; }
   .stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+
+  /* Profile photo */
+  .profile-photo {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-light);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .profile-photo-placeholder {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 3px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 2rem; color: var(--accent);
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+  }
 
   .divider { height: 1px; background: var(--border); max-width: 900px; margin: 0 auto; }
   section { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem; }
@@ -138,6 +158,11 @@
     </div>
   </div>
   <div class="hero-stats">
+    <!-- PHOTO: replace 'photo.jpg' with your actual photo filename once uploaded to GitHub -->
+    <!-- If you don't have a photo yet, the circle with your initials shows instead -->
+    <div class="profile-photo-placeholder" id="photo-wrapper">
+      <img src="photo.jpg" alt="Faezeh Khosravi" class="profile-photo" onerror="this.parentElement.innerHTML='FK'" style="width:130px;height:130px;border-radius:50%;object-fit:cover;border:none;">
+    </div>
     <div class="stat">
       <div class="stat-num">2</div>
       <div class="stat-label">Working papers</div>
