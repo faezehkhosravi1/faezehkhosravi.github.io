@@ -45,9 +45,9 @@
     max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: start;
+    grid-template-columns: 1fr 300px;
+    gap: 4rem;
+    align-items: center;
   }
   .hero-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.25rem; color: var(--ink); }
@@ -61,30 +61,20 @@
   .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--ink); }
 
-  .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; align-items: flex-end; }
-  .stat { text-align: right; }
+  .hero-stats { display: flex; justify-content: space-between; margin-top: 1rem; }
+  .stat { text-align: center; }
   .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--accent); line-height: 1; }
   .stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
 
-  /* Profile photo */
-  .profile-photo {
-    width: 220px; height: 220px;
-    border-radius: 50%;
+  /* Full portrait photo */
+  .hero-photo-col { display: flex; flex-direction: column; gap: 1.25rem; }
+  .hero-portrait {
+    width: 100%;
+    height: 480px;
     object-fit: cover;
-    object-position: center 15%;
-    border: 4px solid var(--accent-light);
+    object-position: center top;
+    border-radius: 4px;
     display: block;
-    margin-bottom: 1.5rem;
-  }
-  .profile-photo-placeholder {
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: var(--accent-light);
-    border: 4px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif); font-size: 2rem; color: var(--accent);
-    margin-bottom: 1.5rem;
-    flex-shrink: 0;
   }
 
   .divider { height: 1px; background: var(--border); max-width: 900px; margin: 0 auto; }
@@ -126,8 +116,7 @@
 
   @media (max-width: 640px) {
     .hero { grid-template-columns: 1fr; }
-    .hero-stats { flex-direction: row; flex-wrap: wrap; }
-    .stat { text-align: left; }
+    .hero-portrait { height: 350px; }
     nav { padding: 0 1.25rem; }
     .nav-links { gap: 1rem; }
     section { padding: 3rem 1.25rem; }
@@ -158,23 +147,21 @@
       <a href="#research" class="btn btn-outline">View Research</a>
     </div>
   </div>
-  <div class="hero-stats">
-    <!-- PHOTO: replace 'photo.jpg' with your actual photo filename once uploaded to GitHub -->
-    <!-- If you don't have a photo yet, the circle with your initials shows instead -->
-    <div class="profile-photo-placeholder" id="photo-wrapper">
-      <img src="photo.jpg" alt="Faezeh Khosravi" class="profile-photo" onerror="this.parentElement.innerHTML='FK'" style="width:220px;height:220px;border-radius:50%;object-fit:cover;object-position:center 15%;border:none;">
-    </div>
-    <div class="stat">
-      <div class="stat-num">2</div>
-      <div class="stat-label">Working papers</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Conf. presentations</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">8+</div>
-      <div class="stat-label">Fellowships & awards</div>
+  <div class="hero-photo-col">
+    <img src="photo.jpg" alt="Faezeh Khosravi" class="hero-portrait">
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Working papers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Conf. presentations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Awards</div>
+      </div>
     </div>
   </div>
 </div>
