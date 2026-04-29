@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faezeh Khosravi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f8f5ef;
+    --ink: #1a1714;
+    --muted: #6b6660;
+    --accent: #8b3a2a;
+    --accent-light: #f0e8e4;
+    --border: rgba(26,23,20,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name { font-family: var(--serif); font-size: 15px; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  .hero {
+    padding: 6rem 2.5rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+  }
+  .hero-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.25rem; color: var(--ink); }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-bio { font-size: 15px; color: var(--muted); max-width: 520px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: 2px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; transition: all 0.2s; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+  .btn-primary:hover { background: #72301f; border-color: #72301f; }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--ink); }
+
+  .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; }
+  .stat { text-align: right; }
+  .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+
+  .divider { height: 1px; background: var(--border); max-width: 900px; margin: 0 auto; }
+  section { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; }
+  h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 400; color: var(--ink); }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  .paper { padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+  .paper:first-child { border-top: 1px solid var(--border); }
+  .paper-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .badge { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+  .badge-draft { background: var(--accent-light); color: var(--accent); }
+  .badge-progress { background: #eef0e8; color: #4a5a2a; }
+  .paper-year { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+  .paper h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; line-height: 1.4; margin-bottom: 8px; color: var(--ink); }
+  .paper-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 680px; }
+  .paper-venue { margin-top: 8px; font-size: 12px; color: var(--accent); font-style: italic; }
+
+  .interests-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .interest-tag { padding: 6px 16px; border: 1px solid var(--border); border-radius: 2px; font-size: 13px; color: var(--ink); background: #fff; }
+
+  .edu-item { display: grid; grid-template-columns: auto 1fr; gap: 0 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .edu-item:first-child { border-top: 1px solid var(--border); }
+  .edu-year { font-size: 12px; color: var(--muted); white-space: nowrap; padding-top: 2px; min-width: 80px; letter-spacing: 0.04em; }
+  .edu-degree { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 2px; }
+  .edu-inst { font-size: 13px; color: var(--muted); }
+
+  .awards-list { list-style: none; }
+  .awards-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .awards-list li:first-child { border-top: 1px solid var(--border); }
+  .award-year { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .skill-block h4 { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .skill-block p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+  footer { border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: row; flex-wrap: wrap; }
+    .stat { text-align: left; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Faezeh Khosravi</span>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Research</a></li>
+    <li><a href="personal.html">Personal</a></li>
+    <li><a href="mailto:fkhosravi1@gsu.edu">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <p class="hero-tag">Ph.D. Candidate in Economics</p>
+    <h1>Faezeh<br><em>Khosravi</em></h1>
+    <p class="hero-bio">
+      Georgia State University · Atlanta, GA<br>
+      Researching labor economics, health economics, and the economics of technological change. Expected graduation 2027.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:fkhosravi1@gsu.edu" class="btn btn-primary">fkhosravi1@gsu.edu</a>
+      <a href="#research" class="btn btn-outline">View Research</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Working papers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Conf. presentations</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Fellowships & awards</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section id="research">
+  <div class="section-header">
+    <h2>Research</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="paper">
+    <div class="paper-meta">
+      <span class="badge badge-draft">Draft</span>
+      <span class="paper-year">2026</span>
+    </div>
+    <h3>Price Discrimination and Gender Inequities in Health Insurance: Evidence from the ACA's Gender Rating Ban</h3>
+    <p class="paper-desc">Studies the impact of the ACA's ban on gender-based pricing in health insurance using ACS data (2010–2018). Implements difference-in-differences and triple-differences designs exploiting cross-state variation in pre-policy gender rating practices. Finds that the reform increased nongroup insurance coverage among women in states with higher pre-policy exposure.</p>
+    <p class="paper-venue">Submitted to APPAM Annual Conference, 2026</p>
+  </div>
+
+  <div class="paper">
+    <div class="paper-meta">
+      <span class="badge badge-draft">Draft</span>
+      <span class="paper-year">2026</span>
+    </div>
+    <h3>Generative AI and Firm Hiring Demand: Evidence from Global Job Postings</h3>
+    <p class="paper-desc">Examines how the release of ChatGPT affected firm hiring demand across countries using global job posting data. Uses a continuous difference-in-differences design with predetermined firm-country exposure based on 2019 occupational composition. Finds heterogeneous dynamics across advanced and developing economies.</p>
+    <p class="paper-venue">Submitted to JEBO Special Issue on Generative AI and Economics, 2026</p>
+  </div>
+
+  <div class="paper">
+    <div class="paper-meta">
+      <span class="badge badge-progress">Work in progress</span>
+    </div>
+    <h3>Geographic Mobility and Smoking Behavior: Evidence from the PSID</h3>
+    <p class="paper-desc">Uses panel data from the PSID to estimate how relocation across regions with different smoking environments affects individual smoking behavior.</p>
+  </div>
+
+  <div class="paper">
+    <div class="paper-meta">
+      <span class="badge badge-progress">Work in progress</span>
+      <span class="paper-year">2026</span>
+    </div>
+    <h3>Reevaluating Medicaid Expansion Using Callaway–Sant'Anna Difference-in-Differences</h3>
+    <p class="paper-desc">Revisits the effects of Medicaid expansion using modern staggered-adoption DiD estimators with CPS data.</p>
+    <p class="paper-venue">Poster accepted — ASHEcon 2026</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="section-header">
+    <h2>Research Interests</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="interests-grid">
+    <span class="interest-tag">Labor Economics</span>
+    <span class="interest-tag">Health Economics</span>
+    <span class="interest-tag">Public Economics</span>
+    <span class="interest-tag">Inequality</span>
+    <span class="interest-tag">Economics of Technological Change</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education">
+  <div class="section-header">
+    <h2>Education</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-item">
+    <span class="edu-year">2022 – 2027</span>
+    <div>
+      <p class="edu-degree">Ph.D. in Economics</p>
+      <p class="edu-inst">Georgia State University, Atlanta, GA · M.A. conferred 2024</p>
+    </div>
+  </div>
+  <div class="edu-item">
+    <span class="edu-year">2019 – 2022</span>
+    <div>
+      <p class="edu-degree">M.Sc. in Theoretical Economics</p>
+      <p class="edu-inst">Al-Zahra University, Tehran, Iran · Thesis: Underwriting Cycles and Business Cycles in Iran's Insurance Sector</p>
+    </div>
+  </div>
+  <div class="edu-item">
+    <span class="edu-year">2015 – 2019</span>
+    <div>
+      <p class="edu-degree">B.Sc. in Theoretical Economics</p>
+      <p class="edu-inst">University of Mazandaran, Iran · First Class Honors, Ranked Top 3</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills">
+  <div class="section-header">
+    <h2>Technical Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <h4>Econometrics</h4>
+      <p>Difference-in-Differences · Triple Differences · Event Studies · Continuous Treatment · Synthetic Control · Staggered Adoption</p>
+    </div>
+    <div class="skill-block">
+      <h4>Programming</h4>
+      <p>Stata (advanced) · R · Python · LaTeX · Excel · Tableau</p>
+    </div>
+    <div class="skill-block">
+      <h4>Data</h4>
+      <p>ACS · CPS · PSID · LinkUp job postings · Large-scale panel processing (GSU ARCTIC HPC)</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="section-header">
+    <h2>Honors & Fellowships</h2>
+    <div class="section-line"></div>
+  </div>
+  <ul class="awards-list">
+    <li><span>QuEST Training, American Institutes for Research (competitive selection)</span><span class="award-year">2026</span></li>
+    <li><span>Graduate Student Research Workshop on Poverty & Economic Mobility — Howard University / U. Wisconsin–Madison</span><span class="award-year">2026</span></li>
+    <li><span>E.D. (Jack) Dunn Fellowship, Georgia State University</span><span class="award-year">2025</span></li>
+    <li><span>Dissertation Fellowship, Iran Insurance Research Center</span><span class="award-year">2020, 2022</span></li>
+    <li><span>Top 1% — National M.A. Entrance Exam (20,000+ students)</span><span class="award-year">2019</span></li>
+    <li><span>Top Student Award (Third Rank) & Full Tuition Waiver, University of Mazandaran</span><span class="award-year">2015–2019</span></li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<footer id="contact">
+  <span>Faezeh Khosravi · Georgia State University</span>
+  <a href="mailto:fkhosravi1@gsu.edu" style="color: var(--accent); text-decoration: none; font-weight: 500;">fkhosravi1@gsu.edu</a>
+</footer>
+
+</body>
+</html>

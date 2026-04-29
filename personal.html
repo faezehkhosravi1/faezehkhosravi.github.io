@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faezeh Khosravi — Personal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #f8f5ef; --ink: #1a1714; --muted: #6b6660; --accent: #8b3a2a;
+    --accent-light: #f0e8e4; --border: rgba(26,23,20,0.12);
+    --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', sans-serif;
+  }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-name { font-family: var(--serif); font-size: 15px; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  .hero { padding: 5rem 2.5rem 3.5rem; max-width: 900px; margin: 0 auto; }
+  .hero-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 1.25rem; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-bio { font-size: 15px; color: var(--muted); max-width: 600px; line-height: 1.9; }
+
+  .divider { height: 1px; background: var(--border); max-width: 900px; margin: 0 auto; }
+  section { max-width: 900px; margin: 0 auto; padding: 3.5rem 2.5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; }
+  h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  .about-text { font-size: 15px; color: var(--muted); line-height: 1.9; max-width: 680px; }
+  .about-text p + p { margin-top: 1rem; }
+
+  .hobbies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; }
+  .hobby-card { background: #fff; border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; }
+  .hobby-icon { font-size: 20px; margin-bottom: 10px; }
+  .hobby-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 6px; }
+  .hobby-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  .places-list { list-style: none; }
+  .place-item { display: flex; align-items: baseline; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .place-item:first-child { border-top: 1px solid var(--border); }
+  .place-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; min-width: 160px; }
+  .place-note { color: var(--muted); font-size: 13px; }
+  .place-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; }
+
+  .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .book-card { background: #fff; border: 1px solid var(--border); border-radius: 2px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 5px; }
+  .book-cat { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; align-self: flex-start; }
+  .cat-growth { background: var(--accent-light); color: var(--accent); }
+  .cat-fiction { background: #eaf0f8; color: #2a4a7a; }
+  .cat-philosophy { background: #eef0e8; color: #4a5a2a; }
+  .cat-finance { background: #f5f0e8; color: #7a5a2a; }
+  .book-title { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; line-height: 1.35; }
+  .book-author { font-size: 12px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Faezeh Khosravi</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Research</a></li>
+    <li><a href="personal.html" class="active">Personal</a></li>
+    <li><a href="mailto:fkhosravi1@gsu.edu">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <p class="hero-tag">Beyond the Research</p>
+  <h1>A little about<br><em>life outside work</em></h1>
+  <p class="hero-bio">I'm a PhD student in Atlanta, originally from Iran. Outside of economics, I find joy in journaling, music, movement, and quietly showing up for others — often when no one is watching.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ======= ABOUT ME — edit the paragraphs below ======= -->
+<section id="about">
+  <div class="section-header">
+    <h2>About Me</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-text">
+    <p>I grew up in Iran and moved to Atlanta to pursue my PhD at Georgia State University. Living between two very different cultures has shaped how I think about inequality, mobility, and opportunity — themes that run through my research as much as my life.</p>
+    <p>I start my mornings early, usually with journaling and meditation before the day takes over. I believe in doing good quietly — helping others not for recognition, but because it feels right. Golf keeps me patient, the piano keeps me present, and the gym keeps me grounded.</p>
+    <p>I'm a lifelong reader drawn to books about growth, meaning, and the human spirit. I'm always happy to connect — whether about research, books, or life.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======= HOBBIES — edit title/desc of each card ======= -->
+<section id="hobbies">
+  <div class="section-header">
+    <h2>Hobbies & Interests</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="hobbies-grid">
+    <div class="hobby-card">
+      <div class="hobby-icon">📓</div>
+      <div class="hobby-title">Journaling</div>
+      <p class="hobby-desc">A daily practice that helps me process thoughts, set intentions, and stay honest with myself.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-icon">⛳</div>
+      <div class="hobby-title">Golf</div>
+      <p class="hobby-desc">A game that teaches patience and focus — two things a PhD student always needs more of.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-icon">📚</div>
+      <div class="hobby-title">Reading</div>
+      <p class="hobby-desc">Especially self-growth and philosophy. Books that challenge how I see myself and the world.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-icon">🏋️</div>
+      <div class="hobby-title">Gym</div>
+      <p class="hobby-desc">Movement as medicine. A non-negotiable part of my routine for clarity and energy.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-icon">🎹</div>
+      <div class="hobby-title">Piano</div>
+      <p class="hobby-desc">My quiet escape. Playing piano is how I find peace when words and data aren't enough.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-icon">🧘</div>
+      <div class="hobby-title">Meditation</div>
+      <p class="hobby-desc">A morning ritual that grounds me before the demands of research and teaching begin.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-icon">🤝</div>
+      <div class="hobby-title">Giving Back</div>
+      <p class="hobby-desc">I believe in helping people quietly — not for recognition, but because it's the right thing to do.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======= TRAVEL — add/remove <li> items ======= -->
+<section id="travel">
+  <div class="section-header">
+    <h2>Places I've Been</h2>
+    <div class="section-line"></div>
+  </div>
+  <ul class="places-list">
+    <li class="place-item"><div class="place-dot"></div><span class="place-name">Tehran, Iran</span><span class="place-note">Home — where it all started</span></li>
+    <li class="place-item"><div class="place-dot"></div><span class="place-name">Mazandaran, Iran</span><span class="place-note">University years by the Caspian Sea</span></li>
+    <li class="place-item"><div class="place-dot"></div><span class="place-name">Atlanta, USA</span><span class="place-note">Current home — PhD life in the South</span></li>
+    <li class="place-item"><div class="place-dot"></div><span class="place-name">Chicago, USA</span><span class="place-note">AIR QuEST training, 2026</span></li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======= BOOKS — edit title/author, or change cat-* class for color ======= -->
+<section id="books">
+  <div class="section-header">
+    <h2>Books I've Read</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="books-grid">
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">The Complete Works of Florence Scovel Shinn</span>
+      <span class="book-author">Florence Scovel Shinn</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">The Subtle Art of Not Giving a F*ck</span>
+      <span class="book-author">Mark Manson</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">The Magic of Thinking Big</span>
+      <span class="book-author">David J. Schwartz</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">The 10X Rule</span>
+      <span class="book-author">Grant Cardone</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">Men Are from Mars, Women Are from Venus</span>
+      <span class="book-author">John Gray</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-finance">Finance</span>
+      <span class="book-title">Rich Dad Poor Dad</span>
+      <span class="book-author">Robert T. Kiyosaki</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">The 5 AM Club</span>
+      <span class="book-author">Robin Sharma</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">Atomic Habits</span>
+      <span class="book-author">James Clear</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-fiction">Fiction</span>
+      <span class="book-title">The Forty Rules of Love</span>
+      <span class="book-author">Elif Shafak</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-fiction">Fiction</span>
+      <span class="book-title">Little Women</span>
+      <span class="book-author">Louisa May Alcott</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-philosophy">Philosophy</span>
+      <span class="book-title">The 48 Laws of Power</span>
+      <span class="book-author">Robert Greene</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-fiction">Fiction</span>
+      <span class="book-title">The Alchemist</span>
+      <span class="book-author">Paulo Coelho</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">Eat That Frog!</span>
+      <span class="book-author">Brian Tracy</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-philosophy">Philosophy</span>
+      <span class="book-title">Man's Search for Meaning</span>
+      <span class="book-author">Viktor E. Frankl</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">Deep Work</span>
+      <span class="book-author">Cal Newport</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-philosophy">Philosophy</span>
+      <span class="book-title">12 Rules for Life</span>
+      <span class="book-author">Jordan B. Peterson</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-fiction">Fiction</span>
+      <span class="book-title">Becoming</span>
+      <span class="book-author">Michelle Obama</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-growth">Self-growth</span>
+      <span class="book-title">Girl, Wash Your Face</span>
+      <span class="book-author">Rachel Hollis</span>
+    </div>
+    <div class="book-card">
+      <span class="book-cat cat-philosophy">Philosophy</span>
+      <span class="book-title">Women Who Run with the Wolves</span>
+      <span class="book-author">Clarissa Pinkola Estés</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<footer>
+  <span>Faezeh Khosravi · Georgia State University</span>
+  <a href="mailto:fkhosravi1@gsu.edu" style="color: var(--accent); text-decoration: none; font-weight: 500;">fkhosravi1@gsu.edu</a>
+</footer>
+
+</body>
+</html>
