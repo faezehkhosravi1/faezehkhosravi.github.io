@@ -68,18 +68,19 @@
 
   /* Profile photo */
   .profile-photo {
-    width: 130px; height: 130px;
+    width: 180px; height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--accent-light);
+    object-position: center top;
+    border: 4px solid var(--accent-light);
     display: block;
     margin-bottom: 1.5rem;
   }
   .profile-photo-placeholder {
-    width: 130px; height: 130px;
+    width: 180px; height: 180px;
     border-radius: 50%;
     background: var(--accent-light);
-    border: 3px solid var(--border);
+    border: 4px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--serif); font-size: 2rem; color: var(--accent);
     margin-bottom: 1.5rem;
@@ -161,7 +162,7 @@
     <!-- PHOTO: replace 'photo.jpg' with your actual photo filename once uploaded to GitHub -->
     <!-- If you don't have a photo yet, the circle with your initials shows instead -->
     <div class="profile-photo-placeholder" id="photo-wrapper">
-      <img src="photo.jpg" alt="Faezeh Khosravi" class="profile-photo" onerror="this.parentElement.innerHTML='FK'" style="width:130px;height:130px;border-radius:50%;object-fit:cover;border:none;">
+      <img src="photo.jpg" alt="Faezeh Khosravi" class="profile-photo" onerror="this.parentElement.innerHTML='FK'" style="width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:center top;border:none;">
     </div>
     <div class="stat">
       <div class="stat-num">2</div>
