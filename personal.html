@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faezeh Khosravi</title>
-<!-- Google tag (gtag.js) -->
+<title>Faezeh Khosravi — Personal</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCS3TXCHFK"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,277 +11,227 @@
   gtag('js', new Date());
   gtag('config', 'G-VCS3TXCHFK');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --cream: #f8f5ef; --ink: #1a1714; --muted: #6b6660; --accent: #8b3a2a;
-    --accent-light: #f0e8e4; --border: rgba(26,23,20,0.12);
-    --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', sans-serif;
-  }
-  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f5f2ec; --bg2: #edeae2; --ink: #1c1917; --ink2: #57534e;
+  --accent: #9b4523; --accent2: #c8784f; --gold: #c9a84c;
+  --border: rgba(28,25,23,0.1); --card: #ffffff;
+  --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Outfit', sans-serif;
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="dark"] {
+  --bg: #0f0e0d; --bg2: #1a1917; --ink: #f0ece4; --ink2: #a09890;
+  --accent: #e07a4f; --gold: #d4af6a; --border: rgba(240,236,228,0.1); --card: #1e1c1a;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; transition: background var(--transition), color var(--transition); overflow-x: hidden; }
+body::before { content:''; position:fixed; inset:0; z-index:999; pointer-events:none; opacity:0.02; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-  nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-  .nav-name { font-family: var(--serif); font-size: 15px; letter-spacing: 0.02em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 3rem; height:60px; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+.nav-logo { font-family:var(--serif); font-size:18px; font-weight:300; color:var(--ink); text-decoration:none; }
+.nav-logo em { color:var(--accent); font-style:italic; }
+.nav-right { display:flex; align-items:center; gap:2.5rem; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink2); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.theme-btn { background:none; border:1px solid var(--border); width:36px; height:36px; border-radius:50%; cursor:pointer; color:var(--ink2); display:flex; align-items:center; justify-content:center; font-size:15px; transition:all 0.3s; }
+.theme-btn:hover { border-color:var(--accent); color:var(--accent); transform:rotate(25deg); }
 
-  .hero { padding: 5rem 2.5rem 3.5rem; max-width: 900px; margin: 0 auto; }
-  .hero-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-  h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 1.25rem; }
-  h1 em { font-style: italic; color: var(--accent); }
-  .hero-bio { font-size: 15px; color: var(--muted); max-width: 600px; line-height: 1.9; }
+/* HERO */
+.hero { min-height: 70vh; padding: 100px 3rem 5rem; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.hero-tag { font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:12px; }
+.hero-tag::before { content:''; width:36px; height:1px; background:var(--accent); }
+.hero-h1 { font-family:var(--serif); font-size:clamp(2.5rem,5vw,4.5rem); font-weight:300; line-height:1.1; margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s 0.3s forwards; }
+.hero-h1 em { display:block; font-style:italic; color:var(--accent); }
+.hero-bio { font-size:15px; color:var(--ink2); line-height:1.9; opacity:0; animation:fadeUp 0.8s 0.5s forwards; }
+.hero-photo-col { opacity:0; animation:fadeIn 1s 0.4s forwards; }
+.hero-portrait { width:100%; height:480px; object-fit:cover; object-position:center top; border-radius:2px; display:block; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; filter:grayscale(8%); transition: filter 0.5s, border-radius 0.5s; }
+.hero-portrait:hover { filter:grayscale(0%); border-radius: 2px; }
 
-  .divider { height: 1px; background: var(--border); max-width: 900px; margin: 0 auto; }
-  section { max-width: 900px; margin: 0 auto; padding: 3.5rem 2.5rem; }
-  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; }
-  h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
+.wrap { max-width:1100px; margin:0 auto; padding:5rem 3rem; }
+.sec-label { display:flex; align-items:center; gap:16px; margin-bottom:2.5rem; }
+.sec-label-text { font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); }
+.sec-label-line { flex:1; height:1px; background:var(--border); }
+.sec-title { font-family:var(--serif); font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:300; line-height:1.2; margin-bottom:2rem; }
+.sec-title em { font-style:italic; color:var(--accent); }
 
-  .about-text { font-size: 15px; color: var(--muted); line-height: 1.9; max-width: 680px; }
-  .about-text p + p { margin-top: 1rem; }
+/* ABOUT */
+.about-text { font-size:15px; color:var(--ink2); line-height:1.95; max-width:680px; }
+.about-text p + p { margin-top:1.25rem; }
 
-  .hobbies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; }
-  .hobby-card { background: #fff; border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; }
-  .hobby-icon { font-size: 20px; margin-bottom: 10px; }
-  .hobby-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 6px; }
-  .hobby-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+/* HOBBIES */
+.hobbies-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1.25rem; }
+.hobby { background:var(--card); border:1px solid var(--border); border-radius:2px; padding:1.5rem; transition:transform 0.3s, border-color 0.3s; cursor:default; }
+.hobby:hover { transform:translateY(-4px); border-color:var(--accent); }
+.hobby-icon { font-size:28px; margin-bottom:12px; display:block; }
+.hobby-name { font-family:var(--serif); font-size:1.05rem; font-weight:400; margin-bottom:6px; }
+.hobby-desc { font-size:13px; color:var(--ink2); line-height:1.7; }
 
-  .places-list { list-style: none; }
-  .place-item { display: flex; align-items: baseline; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-  .place-item:first-child { border-top: 1px solid var(--border); }
-  .place-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; min-width: 160px; }
-  .place-note { color: var(--muted); font-size: 13px; }
-  .place-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; }
+/* CURRENTLY READING */
+.reading-widget { background:var(--card); border:1px solid var(--border); border-radius:2px; padding:1.75rem; display:flex; gap:1.5rem; align-items:flex-start; margin-bottom:1.25rem; transition:border-color 0.3s, transform 0.3s; }
+.reading-widget:hover { border-color:var(--accent); transform:translateX(6px); }
+.book-spine { width:6px; background:var(--accent); border-radius:3px; flex-shrink:0; align-self:stretch; min-height:60px; }
+.book-status { font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px; }
+.s-reading { color:var(--accent); }
+.s-done { color: #4a7a4a; }
+.s-next { color:var(--ink2); }
+.book-title { font-family:var(--serif); font-size:1.05rem; font-weight:400; margin-bottom:3px; line-height:1.35; }
+.book-author { font-size:12.5px; color:var(--ink2); }
 
-  .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-  .book-card { background: #fff; border: 1px solid var(--border); border-radius: 2px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 5px; }
-  .book-cat { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; align-self: flex-start; }
-  .cat-growth { background: var(--accent-light); color: var(--accent); }
-  .cat-fiction { background: #eaf0f8; color: #2a4a7a; }
-  .cat-philosophy { background: #eef0e8; color: #4a5a2a; }
-  .cat-finance { background: #f5f0e8; color: #7a5a2a; }
-  .book-title { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; line-height: 1.35; }
-  .book-author { font-size: 12px; color: var(--muted); }
+/* BOOKS GRID */
+.books-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; }
+.book-card { background:var(--card); border:1px solid var(--border); border-radius:2px; padding:1.1rem 1.25rem; display:flex; flex-direction:column; gap:5px; transition:transform 0.3s, border-color 0.3s; }
+.book-card:hover { transform:translateY(-3px); border-color:var(--accent); }
+.book-cat { font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:2px; align-self:flex-start; }
+.c-growth { background:rgba(155,69,35,0.1); color:var(--accent); }
+.c-fiction { background:#eaf0f8; color:#2a4a7a; }
+.c-phil { background:#eef0e8; color:#4a5a2a; }
+.c-finance { background:#f5f0e8; color:#7a5a2a; }
+.book-card-title { font-family:var(--serif); font-size:0.95rem; font-weight:400; line-height:1.35; }
+.book-card-author { font-size:12px; color:var(--ink2); }
 
-  footer { border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+/* DIVIDER / FOOTER */
+.divider { height:1px; background:var(--border); max-width:1100px; margin:0 auto; }
+footer { border-top:1px solid var(--border); max-width:1100px; margin:0 auto; padding:2rem 3rem; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--ink2); }
 
-  @media (max-width: 640px) {
-    nav { padding: 0 1.25rem; }
-    .nav-links { gap: 1rem; }
-    section { padding: 3rem 1.25rem; }
-  }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0}to{opacity:1} }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s}
+
+@media(max-width:768px) {
+  .hero { grid-template-columns:1fr; }
+  .hero-photo-col { display:none; }
+  nav { padding:0 1.5rem; }
+  .nav-links { gap:1.2rem; }
+  .wrap { padding:3.5rem 1.5rem; }
+  footer { flex-direction:column; gap:1rem; text-align:center; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <span class="nav-name">Faezeh Khosravi</span>
-  <ul class="nav-links">
-    <li><a href="index.html">Research</a></li>
-    <li><a href="personal.html" class="active">Personal</a></li>
-    <li><a href="mailto:fkhosravi1@gsu.edu">Contact</a></li>
-  </ul>
+  <a href="index.html" class="nav-logo">Faezeh <em>Khosravi</em></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Research</a></li>
+      <li><a href="personal.html" class="active">Personal</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button>
+  </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <p class="hero-tag">Beyond the Research</p>
-  <h1>A little about<br><em>life outside work</em></h1>
-  <p class="hero-bio">I'm a PhD student in Atlanta, originally from Iran. Outside of economics, I find joy in journaling, music, movement, and quietly showing up for others — often when no one is watching.</p>
+  <div>
+    <div class="hero-tag" style="opacity:0;animation:fadeUp 0.8s 0.2s forwards">Beyond the Research</div>
+    <h1 class="hero-h1">Life<em>Outside Work</em></h1>
+    <p class="hero-bio">A PhD student is more than her research. This page is a small window into the person behind the papers — the morning routines, the books, the piano keys, and the quiet acts of kindness that keep me grounded.</p>
+  </div>
+  <div class="hero-photo-col">
+    <!-- Add a personal photo here: <img src="personal-photo.jpg" class="hero-portrait"> -->
+    <img src="photo.jpg" alt="Faezeh Khosravi" class="hero-portrait">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="divider"></div>
+<div class="wrap" id="about">
+  <div class="sec-label reveal"><span class="sec-label-text">About Me</span><div class="sec-label-line"></div></div>
+  <h2 class="sec-title reveal">The person<br><em>behind the work</em></h2>
+  <div class="about-text reveal">
+    <p>I start my mornings early — journal first, then meditation, then the day. This rhythm keeps me sane through the highs and lows of PhD life. I believe deeply in intentional living: knowing why you do what you do, and doing it fully.</p>
+    <p>I love golf for its patience, the piano for its peace, and the gym for its honesty. Books are my constant companions — especially those that challenge how I see myself and the world. I'm drawn to ideas about growth, resilience, and what it means to live a meaningful life.</p>
+    <p>I believe in giving back quietly. Helping people not because anyone is watching, but because it's the right thing to do. Some of the most important things we do are the ones no one sees.</p>
+  </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ======= ABOUT ME — edit the paragraphs below ======= -->
-<section id="about">
-  <div class="section-header">
-    <h2>About Me</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="about-text">
-    <p>I grew up in Iran and moved to Atlanta to pursue my PhD at Georgia State University. Living between two very different cultures has shaped how I think about inequality, mobility, and opportunity — themes that run through my research as much as my life.</p>
-    <p>I start my mornings early, usually with journaling and meditation before the day takes over. I believe in doing good quietly — helping others not for recognition, but because it feels right. Golf keeps me patient, the piano keeps me present, and the gym keeps me grounded.</p>
-    <p>I'm a lifelong reader drawn to books about growth, meaning, and the human spirit. I'm always happy to connect — whether about research, books, or life.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ======= HOBBIES — edit title/desc of each card ======= -->
-<section id="hobbies">
-  <div class="section-header">
-    <h2>Hobbies & Interests</h2>
-    <div class="section-line"></div>
-  </div>
+<!-- HOBBIES -->
+<div class="wrap">
+  <div class="sec-label reveal"><span class="sec-label-text">Hobbies</span><div class="sec-label-line"></div></div>
+  <h2 class="sec-title reveal">How I spend<br><em>my time</em></h2>
   <div class="hobbies-grid">
-    <div class="hobby-card">
-      <div class="hobby-icon">📓</div>
-      <div class="hobby-title">Journaling</div>
-      <p class="hobby-desc">A daily practice that helps me process thoughts, set intentions, and stay honest with myself.</p>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-icon">⛳</div>
-      <div class="hobby-title">Golf</div>
-      <p class="hobby-desc">A game that teaches patience and focus — two things a PhD student always needs more of.</p>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-icon">📚</div>
-      <div class="hobby-title">Reading</div>
-      <p class="hobby-desc">Especially self-growth and philosophy. Books that challenge how I see myself and the world.</p>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-icon">🏋️</div>
-      <div class="hobby-title">Gym</div>
-      <p class="hobby-desc">Movement as medicine. A non-negotiable part of my routine for clarity and energy.</p>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-icon">🎹</div>
-      <div class="hobby-title">Piano</div>
-      <p class="hobby-desc">My quiet escape. Playing piano is how I find peace when words and data aren't enough.</p>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-icon">🧘</div>
-      <div class="hobby-title">Meditation</div>
-      <p class="hobby-desc">A morning ritual that grounds me before the demands of research and teaching begin.</p>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-icon">🤝</div>
-      <div class="hobby-title">Giving Back</div>
-      <p class="hobby-desc">I believe in helping people quietly — not for recognition, but because it's the right thing to do.</p>
-    </div>
+    <div class="hobby reveal"><span class="hobby-icon">📓</span><div class="hobby-name">Journaling</div><p class="hobby-desc">A daily practice. I process my thoughts, set intentions, and stay honest with myself on paper.</p></div>
+    <div class="hobby reveal d1"><span class="hobby-icon">⛳</span><div class="hobby-name">Golf</div><p class="hobby-desc">A game that teaches patience and focus — two things a PhD student always needs more of.</p></div>
+    <div class="hobby reveal d2"><span class="hobby-icon">📚</span><div class="hobby-name">Reading</div><p class="hobby-desc">Self-growth, philosophy, fiction. Books that challenge how I see myself and the world.</p></div>
+    <div class="hobby reveal d3"><span class="hobby-icon">🏋️</span><div class="hobby-name">Gym</div><p class="hobby-desc">Movement as medicine. Non-negotiable for clarity, energy, and sanity during long research days.</p></div>
+    <div class="hobby reveal"><span class="hobby-icon">🎹</span><div class="hobby-name">Piano</div><p class="hobby-desc">My quiet escape. Playing is how I find peace when words and data aren't enough.</p></div>
+    <div class="hobby reveal d1"><span class="hobby-icon">🧘</span><div class="hobby-name">Meditation</div><p class="hobby-desc">A morning ritual that grounds me before the demands of research and teaching begin.</p></div>
+    <div class="hobby reveal d2"><span class="hobby-icon">🤝</span><div class="hobby-name">Giving Back</div><p class="hobby-desc">I believe in helping people quietly — not for recognition, but because it's simply the right thing to do.</p></div>
   </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<!-- ======= TRAVEL — add/remove <li> items ======= -->
-<section id="travel">
-  <div class="section-header">
-    <h2>Places I've Been</h2>
-    <div class="section-line"></div>
-  </div>
-  <ul class="places-list">
-    <li class="place-item"><div class="place-dot"></div><span class="place-name">Tehran, Iran</span><span class="place-note">Home — where it all started</span></li>
-    <li class="place-item"><div class="place-dot"></div><span class="place-name">Mazandaran, Iran</span><span class="place-note">University years by the Caspian Sea</span></li>
-    <li class="place-item"><div class="place-dot"></div><span class="place-name">Atlanta, USA</span><span class="place-note">Current home — PhD life in the South</span></li>
-    <li class="place-item"><div class="place-dot"></div><span class="place-name">Chicago, USA</span><span class="place-note">AIR QuEST training, 2026</span></li>
-  </ul>
-</section>
+<!-- CURRENTLY READING -->
+<div class="wrap">
+  <div class="sec-label reveal"><span class="sec-label-text">Books</span><div class="sec-label-line"></div></div>
+  <h2 class="sec-title reveal">What I'm<br><em>Reading</em></h2>
 
-<div class="divider"></div>
-
-<!-- ======= BOOKS — edit title/author, or change cat-* class for color ======= -->
-<section id="books">
-  <div class="section-header">
-    <h2>Books I've Read</h2>
-    <div class="section-line"></div>
+  <div style="max-width:560px; margin-bottom:3rem;">
+    <div class="reading-widget reveal">
+      <div class="book-spine"></div>
+      <div>
+        <div class="book-status s-reading">📖 Currently reading</div>
+        <div class="book-title">Update this with your current book ✏️</div>
+        <div class="book-author">Author · your one-sentence thought on it</div>
+      </div>
+    </div>
+    <div class="reading-widget reveal d1">
+      <div class="book-spine" style="background:var(--gold)"></div>
+      <div>
+        <div class="book-status s-done" style="color:#4a7a4a;">✓ Recently finished</div>
+        <div class="book-title">Update this with your last read ✏️</div>
+        <div class="book-author">Author · would you recommend it?</div>
+      </div>
+    </div>
   </div>
+
+  <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:300;margin-bottom:1.5rem;" class="reveal">All the books I've <em>read</em></h3>
   <div class="books-grid">
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">The Complete Works of Florence Scovel Shinn</span>
-      <span class="book-author">Florence Scovel Shinn</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">The Subtle Art of Not Giving a F*ck</span>
-      <span class="book-author">Mark Manson</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">The Magic of Thinking Big</span>
-      <span class="book-author">David J. Schwartz</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">The 10X Rule</span>
-      <span class="book-author">Grant Cardone</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">Men Are from Mars, Women Are from Venus</span>
-      <span class="book-author">John Gray</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-finance">Finance</span>
-      <span class="book-title">Rich Dad Poor Dad</span>
-      <span class="book-author">Robert T. Kiyosaki</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">The 5 AM Club</span>
-      <span class="book-author">Robin Sharma</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">Atomic Habits</span>
-      <span class="book-author">James Clear</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-fiction">Fiction</span>
-      <span class="book-title">The Forty Rules of Love</span>
-      <span class="book-author">Elif Shafak</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-fiction">Fiction</span>
-      <span class="book-title">Little Women</span>
-      <span class="book-author">Louisa May Alcott</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-philosophy">Philosophy</span>
-      <span class="book-title">The 48 Laws of Power</span>
-      <span class="book-author">Robert Greene</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-fiction">Fiction</span>
-      <span class="book-title">The Alchemist</span>
-      <span class="book-author">Paulo Coelho</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">Eat That Frog!</span>
-      <span class="book-author">Brian Tracy</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-philosophy">Philosophy</span>
-      <span class="book-title">Man's Search for Meaning</span>
-      <span class="book-author">Viktor E. Frankl</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">Deep Work</span>
-      <span class="book-author">Cal Newport</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-philosophy">Philosophy</span>
-      <span class="book-title">12 Rules for Life</span>
-      <span class="book-author">Jordan B. Peterson</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-fiction">Fiction</span>
-      <span class="book-title">Becoming</span>
-      <span class="book-author">Michelle Obama</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-growth">Self-growth</span>
-      <span class="book-title">Girl, Wash Your Face</span>
-      <span class="book-author">Rachel Hollis</span>
-    </div>
-    <div class="book-card">
-      <span class="book-cat cat-philosophy">Philosophy</span>
-      <span class="book-title">Women Who Run with the Wolves</span>
-      <span class="book-author">Clarissa Pinkola Estés</span>
-    </div>
+    <div class="book-card reveal"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">The Complete Works of Florence Scovel Shinn</span><span class="book-card-author">Florence Scovel Shinn</span></div>
+    <div class="book-card reveal d1"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">The Subtle Art of Not Giving a F*ck</span><span class="book-card-author">Mark Manson</span></div>
+    <div class="book-card reveal d2"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">The Magic of Thinking Big</span><span class="book-card-author">David J. Schwartz</span></div>
+    <div class="book-card reveal"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">The 10X Rule</span><span class="book-card-author">Grant Cardone</span></div>
+    <div class="book-card reveal d1"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">Men Are from Mars, Women Are from Venus</span><span class="book-card-author">John Gray</span></div>
+    <div class="book-card reveal d2"><span class="book-cat c-finance">Finance</span><span class="book-card-title">Rich Dad Poor Dad</span><span class="book-card-author">Robert T. Kiyosaki</span></div>
+    <div class="book-card reveal"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">The 5 AM Club</span><span class="book-card-author">Robin Sharma</span></div>
+    <div class="book-card reveal d1"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">Atomic Habits</span><span class="book-card-author">James Clear</span></div>
+    <div class="book-card reveal d2"><span class="book-cat c-fiction">Fiction</span><span class="book-card-title">The Forty Rules of Love</span><span class="book-card-author">Elif Shafak</span></div>
+    <div class="book-card reveal"><span class="book-cat c-fiction">Fiction</span><span class="book-card-title">Little Women</span><span class="book-card-author">Louisa May Alcott</span></div>
+    <div class="book-card reveal d1"><span class="book-cat c-phil">Philosophy</span><span class="book-card-title">The 48 Laws of Power</span><span class="book-card-author">Robert Greene</span></div>
+    <div class="book-card reveal d2"><span class="book-cat c-fiction">Fiction</span><span class="book-card-title">The Alchemist</span><span class="book-card-author">Paulo Coelho</span></div>
+    <div class="book-card reveal"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">Eat That Frog!</span><span class="book-card-author">Brian Tracy</span></div>
+    <div class="book-card reveal d1"><span class="book-cat c-phil">Philosophy</span><span class="book-card-title">Man's Search for Meaning</span><span class="book-card-author">Viktor E. Frankl</span></div>
+    <div class="book-card reveal d2"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">Deep Work</span><span class="book-card-author">Cal Newport</span></div>
+    <div class="book-card reveal"><span class="book-cat c-phil">Philosophy</span><span class="book-card-title">12 Rules for Life</span><span class="book-card-author">Jordan B. Peterson</span></div>
+    <div class="book-card reveal d1"><span class="book-cat c-fiction">Fiction</span><span class="book-card-title">Becoming</span><span class="book-card-author">Michelle Obama</span></div>
+    <div class="book-card reveal d2"><span class="book-cat c-growth">Self-growth</span><span class="book-card-title">Girl, Wash Your Face</span><span class="book-card-author">Rachel Hollis</span></div>
+    <div class="book-card reveal"><span class="book-cat c-phil">Philosophy</span><span class="book-card-title">Women Who Run with the Wolves</span><span class="book-card-author">Clarissa Pinkola Estés</span></div>
   </div>
-</section>
-
-<div class="divider"></div>
+</div>
 
 <footer>
-  <span>Faezeh Khosravi · Georgia State University</span>
-  <a href="mailto:fkhosravi1@gsu.edu" style="color: var(--accent); text-decoration: none; font-weight: 500;">fkhosravi1@gsu.edu</a>
+  <span>© 2026 Faezeh Khosravi</span>
+  <a href="index.html" style="color:var(--accent);text-decoration:none;font-size:12px;">← Back to Research</a>
 </footer>
 
+<script>
+function toggleTheme() {
+  const h = document.documentElement;
+  const dark = h.getAttribute('data-theme') === 'dark';
+  h.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = dark ? '☀️' : '🌙';
+}
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
